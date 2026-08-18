@@ -1,0 +1,33 @@
+package model;
+
+public class PlushToy extends Toy{
+	private String material;
+
+	public PlushToy(String name, String id, double price, int quantity, String material) {
+		super(name, id, price, quantity);
+		this.material = material;
+	}
+
+	public String getMaterial() {
+		return material;
+	}
+
+	public void setMaterial(String material) {
+		this.material = material;
+	}
+
+	@Override
+	public double calculateDiscount() { 
+		// TODO Auto-generated method stub
+		return getPrice()*0.1;
+	}
+
+	@Override
+	public void printInfo() {
+		super.printInfo();
+		System.out.println("Chất liệu: "+ material);
+		System.out.println("Số tiền được giảm giá" + calculateDiscount());
+	}
+}
+	 
+ 
