@@ -1,43 +1,38 @@
+import java.util.ArrayList;
+
 public class Order {
     String orderId;
     Customer customer;
-    Product[] items;
-    int count;
+    ArrayList<Product> items;
 
     public Order(String orderId, Customer customer) {
         this.orderId = orderId;
         this.customer = customer;
-         items= new Product[20];
-         count=0;
+        items = new ArrayList<>();
     }
-    public void addProduct(Product p){
-        if(count< items.length){
-            items[count] =product;
-            count++;
-        }
-        else{
-            System.out.println("full danh sách!");
-        }
+    public void addProduct(Product product){
+       items.add(product);
 
     }
     public double getTotal(){
         double total=0;
-        for(int i=0;i<count;i++){
-            total+= items[i].getSubtotal();
+        for(Product product: items){
+            total+= product.getSubtotal();
 
         }
         return total;
 
     }
     public void printInvoice(){
-        System.out.println("mã hàng: "+orderId);
+        System.out.println("mã : "+orderId);
         System.out.println("tên khách hàng: "+customer.name);
         System.out.println("sđt khách hàng: "+customer.phone);
         System.out.println("địa chỉ: "+customer.address);
-        for(int i=0;i<count;i++){
-            Product product= items[i];
-            System.out.println(product.id+product.name+product.price.product.quantity+ product.getSubtotal());
+        for(Product product:items){
+            System.out.println("Mã sp: "+product.id+" "+"Tên sp: "+product.name+" "+" giá: "+product.price+" "+"Số lượng:  "+ product.quantity +" " +"Tổng: "+ product.getSubtotal());
         }
+        System.out.println("Tổng tiền: "+ getTotal());
     }
+
 
 }
